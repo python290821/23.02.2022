@@ -74,3 +74,8 @@ def get_customer_by_id(id):
         return '{"status": "not found"}'
 
 app.run()
+
+# download post-man
+# activate:
+# GET, GET/ID, POST, PUT, PATCH, DELETE -- check if they work
+# connect the project to a DB (sqlite, postgresql, w/o alchemy)
