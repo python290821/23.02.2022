@@ -37,6 +37,7 @@ def get_or_post_customer():
 
 @app.route('/customers/<int:id>', methods=['GET', 'PUT', 'DELETE', 'PATCH'])
 def get_customer_by_id(id):
+    global customers
     if request.method == 'GET':
         # pseudo - select * from Customers where Customer.id == id
         # parsing
@@ -72,6 +73,9 @@ def get_customer_by_id(id):
                 c["address"] = updated_customer["address"] if "address" in updated_customer.keys() else c["address"]
                 return json.dumps(updated_customer)
         return '{"status": "not found"}'
+    if request.method == 'DELETE':
+        customers = [c for c in customers if c["id"] != id]
+        return json.dumps(customers)
 
 app.run()
 
